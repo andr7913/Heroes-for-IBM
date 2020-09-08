@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Heroes.Core.ApplicationService
 {
-  public  interface IpetService
+  public  interface IPetService
     {
         Pet CreatePet(Pet createdPet);
 

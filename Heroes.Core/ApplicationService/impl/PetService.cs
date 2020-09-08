@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Heroes.Core.ApplicationService.impl
 {
-    class PetService : IPetService
+   public class PetService : IPetService
     {
 
         private readonly IPetRepository _petRepository;
