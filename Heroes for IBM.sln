@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heroes for IBM", "Heroes fo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{A030DB25-8F28-4A90-AF00-9B3868BC4B3F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{C3B874CD-6823-40E9-AAAD-C5A0F23C9D9E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F3BF567C-EF52-47C6-826B-462ECD5530B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heroes.Core", "Heroes.Core\Heroes.Core.csproj", "{B2260D7D-0219-476B-8DB7-C786C435803C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +21,16 @@ Global
 		{7BC70245-DAF8-4A1E-B2E5-DCF48F8FAC3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BC70245-DAF8-4A1E-B2E5-DCF48F8FAC3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BC70245-DAF8-4A1E-B2E5-DCF48F8FAC3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2260D7D-0219-476B-8DB7-C786C435803C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2260D7D-0219-476B-8DB7-C786C435803C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2260D7D-0219-476B-8DB7-C786C435803C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2260D7D-0219-476B-8DB7-C786C435803C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B2260D7D-0219-476B-8DB7-C786C435803C} = {F3BF567C-EF52-47C6-826B-462ECD5530B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7AD58431-90B2-46F8-8DB9-4747D9C6072C}
