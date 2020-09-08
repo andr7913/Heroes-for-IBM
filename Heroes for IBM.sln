@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heroes for IBM", "Heroes for IBM\Heroes for IBM.csproj", "{7BC70245-DAF8-4A1E-B2E5-DCF48F8FAC3F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{45A469E1-5D52-4D3C-AC63-8E14B1D3E7ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{A030DB25-8F28-4A90-AF00-9B3868BC4B3F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BC70245-DAF8-4A1E-B2E5-DCF48F8FAC3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BC70245-DAF8-4A1E-B2E5-DCF48F8FAC3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BC70245-DAF8-4A1E-B2E5-DCF48F8FAC3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BC70245-DAF8-4A1E-B2E5-DCF48F8FAC3F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7AD58431-90B2-46F8-8DB9-4747D9C6072C}
+	EndGlobalSection
+EndGlobal
