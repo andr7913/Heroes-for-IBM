@@ -1,0 +1,12 @@
+{
+  "services": {
+    "dashDB For Transactions": [
+      {
+        "credentials": {
+          "url": "https://dashdb-txn-sbox-yp-lon02-04.services.eu-gb.bluemix.net:8443"
+        },
+        "label": "dashDB For Transactions"
+      }
+    ]
+  }
+}
