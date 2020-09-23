@@ -18,6 +18,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using IBM.EntityFrameworkCore;
+using IBM.EntityFrameworkCore.Infrastructure;
+using Microsoft.OpenApi.Models;
 
 namespace IBM.API
 {
@@ -31,7 +33,6 @@ namespace IBM.API
 
         public IConfiguration Configuration { get; }
         public IWebHostEnvironment Environment { get; }
-        public DB2Connection Connection { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -40,17 +41,25 @@ namespace IBM.API
             services.AddCors(opt => opt.AddPolicy("AllowSpecificOrigin",
                 builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 
-            /*if (Environment.IsDevelopment())
+            if (Environment.IsDevelopment())
                 services.AddDbContext<DatabaseContext>(
                     opt => opt.UseSqlite("Data source=tourofheroes.db"));
 
-            if (Environment.IsProduction())
+            /*if (Environment.IsProduction())
                 services.AddDbContext<DatabaseContext>(
                     opt => opt.UseSqlServer(Configuration.GetConnectionString("defaultConnection"))); */
-
+            var db2Builder = new DB2ConnectionStringBuilder
+            {
+                Server = "dashdb-txn-sbox-yp-lon02-04.services.eu-gb.bluemix.net:50000",
+                UserID = "ftd42305",
+                Password = "9pgxwwkcw9g75c^s",
+                Database = "BLUDB"
+            };
+            DB2Connection conn = new DB2Connection(db2Builder.ConnectionString);
+            
             if (Environment.IsProduction())
                 services.AddDbContext<DatabaseContext>(
-                    opt => opt.UseDb2());
+                    opt => opt.UseDb2(conn, builder => builder.SetServerInfo(IBMDBServerType.AS400)));
 
             services.AddScoped<IPetRepository, PetRepository>();
             services.AddScoped<IPetService, PetService>();
@@ -60,6 +69,15 @@ namespace IBM.API
             services.AddControllers();
 
             services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Heroes API",
+                    Version = "v1",
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,16 +87,18 @@ namespace IBM.API
             {
                 var service = app.ApplicationServices.CreateScope().ServiceProvider;
                 var ctx = service.GetService<DatabaseContext>();
-                ctx.Database.EnsureCreated();
+                ctx.Database.EnsureCreatedAsync();
                 app.UseDeveloperExceptionPage();
             }
             if (env.IsProduction())
             {
                 var service = app.ApplicationServices.CreateScope().ServiceProvider;
                 var ctx = service.GetService<DatabaseContext>();
-                ctx.Database.EnsureCreated();
+                ctx.Database.EnsureCreatedAsync();
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
 
             app.UseHttpsRedirection();
 
